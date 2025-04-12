@@ -1,13 +1,29 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>MercatifyStore</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
-</body>
+<!DOCTYPE html>
+<html lang="en" class="">
+  <head>
+    <meta charset="utf-8" />
+    <title>MercatifyStore</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  </head>
+  <body class="dark:bg-zinc-900">
+    <app-root></app-root>
+    <script>
+      // Aplicar la clase según la preferencia guardada o la del sistema
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") {
+        document.documentElement.classList.add("dark");
+      } else if (savedTheme === "light") {
+        document.documentElement.classList.add("light");
+      } else {
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (prefersDark) {
+          document.documentElement.classList.add("dark");
+        }
+      }
+    </script>
+  </body>
 </html>
